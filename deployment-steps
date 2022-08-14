@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+   name: springboot-hello-aks
+spec:
+   replicas: 1
+   selector:
+      matchLabels:
+         apps: springboot-hello-aks
+   template:
+      metadata:
+         labels:
+            app: springboot-hello-aks
+      spec:
+         containers:
+         - name: springboot-hello-aks
+           image: practicep.azurecr.io/prabhu4tx:31283823c5a5c862d7b0fe88298472f31583f6fc
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: springboot-hello-aks
+spec:
+   type: LoadBalancer
+   ports:
+   - port: 80
+     targetPort: 8080
+   selector:
+      app: springboot-hello-aks
