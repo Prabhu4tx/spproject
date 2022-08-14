@@ -16,7 +16,7 @@ RUN mvn clean package
 
 FROM openjdk:11-jre-slim
 
-ARG JAR_NAME="spring-boot-helloworld"
+ARG JAR_NAME="spproject"
 
 WORKDIR /usr/src/app
 
